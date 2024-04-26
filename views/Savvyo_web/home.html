@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web-st/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">    
+    <title>SavvyO</title>
+    
+</head>
+
+<body>
+    <div class="savvio"><h4 id="">Welcome to Savvyo - Where every purchase is a shared adventure!</h4> </div>
+     <div class="top-space"><img src="/web-st/image/Savvyo_logo.png" alt=""> 
+        <!-- <div class="follow-us">
+            <a href="https://www.instagram.com"><img src="image/insta.png" alt="Instagram"></a>
+            <a href="mailto:devanshdumir@gmail.com"><img src="image/mail.png" alt="Facebook"></a>
+            <a href="https://www.facebook.com"><img src="image/facebook logo.png" alt="Facebook"></a>
+            <a href="https://www.youtube.com"><img src="image/Youtube_logo.png" alt="YouTube"></a>
+        </div> -->
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="body-content">
+    <div class="flex-container">
+        <div class="flex-item">
+            <div id="flextext">
+                <div class="slide-flex"> <b>We Are </b><span id="values"></span></div>
+            <div class="animated-text">
+                <h1 id="slogan">Introducing Savvyo </h1> 
+                <br>
+                <h2> Where innovation meets community in the 
+                    <br>
+                    world of e-commerce.</h2> 
+                </div>
+            <br>
+            
+             </div>
+        </div>
+        <div class="flex-item2">
+            <img src="/web-st/image/sav_poster.png">
+            <!-- <video type="video" height="400px" controls>
+             <source src="image/y2mate.com - Harry Styles  As It Was Official Video_1440p.mp4" type="video/mp4">
+             Your browser does not support the video tag.
+            </video> -->
+    </div>
+</div>
+</div>
+<section class="about">
+    <h2>About SavvyO</h2>
+    <p>SavvyO is an innovative e-commerce platform that revolutionizes the
+         way people buy and sell online. With a focus on community-driven 
+         experiences, SavvyO connects sellers with buyers who share similar
+          interests, creating a dynamic marketplace where every purchase is
+           a shared adventure.</p>
+    <p>Our platform offers a wide range of products, from unique handmade
+         items to cutting-edge gadgets, curated by passionate sellers from
+          around the world. Whether you're a seller looking to showcase your
+           products or a buyer seeking something special, SavvyO has something
+            for everyone.</p>
+</section>
+    
+    <script>
+        const values = document.getElementById('values');
+    
+        const slogans = ['Revolution!', 'Community Driven!', 'Saving!'];
+        let index = 0;
+    
+        function changeValue() {
+            values.style.animation = 'none'; // Reset animation
+    void values.offsetWidth; // Trigger reflow
+    values.style.animation = 'slide-in 1s ease-out forwards'; // Apply animation
+    values.textContent = slogans[index];
+    index = (index + 1) % slogans.length;
+        }
+    
+        setInterval(() => {
+          changeValue();
+        }, 2000);
+        </script>
+        <footer>
+            <a href="../Admin/index.html">Admin</a>
+            <a href="/Seller/seller_first_pg">Seller</a>
+            <a href="seller.html">Register For Seller</a>
+        </footer>
+</body>
+</html>

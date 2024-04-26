@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>GST Form</title>
+  <!-- Include Firebase SDK -->
+
+</head>
+<body>
+
+    <h1>GST Form</h1>
+    <div id="progressTracker">
+        <span class="progressStep" id="step1">1</span>
+        <span class="progressStep" id="step2">2</span>
+        <span class="progressStep" id="step3">3</span>
+        <span class="progressStep" id="step4">4</span>
+        <span class="progressStep" id="step5">5</span>
+      </div>
+      <div id="formContainer">
+        <form id="gstForm">
+          <div id="gstNumberSection">
+            <label for="gstNumber">GST Number:</label>
+            <input type="text" id="gstNumber" name="gstNumber" required><br><br>
+            <button type="button" onclick="showNextField('gstNumberSection', 'storeNameSection', 'step1', 'step2')">Next</button>
+          </div>
+    
+          <div id="storeNameSection" style="display: none;">
+            <label for="storeName">Store Name:</label>
+            <input type="text" id="storeName" name="storeName" required><br><br>
+            <button type="button" onclick="showNextField('storeNameSection', 'taxDetailsSection', 'step2', 'step3')">Next</button>
+          </div>
+    
+          <div id="taxDetailsSection" style="display: none;">
+            <label for="taxDetails">Tax Details:</label>
+            <input type="text" id="taxDetails" name="taxDetails" required><br><br>
+            <button type="button" onclick="showNextField('taxDetailsSection', 'shippingPreferencesSection', 'step3', 'step4')">Next</button>
+          </div>
+    
+          <div id="shippingPreferencesSection" style="display: none;">
+            <label for="shippingPreferences">Shipping Preferences:</label>
+            <input type="text" id="shippingPreferences" name="shippingPreferences" required><br><br>
+            <button type="button" onclick="showNextField('shippingPreferencesSection', 'pickupAddressSection', 'step4', 'step5')">Next</button>
+          </div>
+    
+          <div id="pickupAddressSection" style="display: none;">
+            <label for="pickupAddress">Pickup Address:</label>
+            <input type="text" id="pickupAddress" name="pickupAddress" required><br><br>
+            <button type="button" onclick="showNextField('pickupAddressSection', 'bankDetailsSection', 'step5', 'step6')">Next</button>
+          </div>
+    
+          <div id="bankDetailsSection" style="display: none;">
+            <label for="bankDetails">Bank Details:</label>
+            <input type="text" id="bankDetails" name="bankDetails" required><br><br>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="css/bcken.js"></script>
+
+<script>
+ function showNextField(currentSectionId, nextSectionId, currentStepId, nextStepId) {
+    const currentSection = document.getElementById(currentSectionId);
+    const nextSection = document.getElementById(nextSectionId);
+    const currentStep = document.getElementById(currentStepId);
+    const nextStep = document.getElementById(nextStepId);
+
+    currentSection.style.display = 'none';
+    nextSection.style.display = 'block';
+    currentStep.classList.add('completed');
+    nextStep.classList.add('active');
+  }
+  </script>
+</body>
+</html>

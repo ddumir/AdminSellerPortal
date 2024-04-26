@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Selling Website</title>
+
+    <link rel="stylesheet" href="/seller-st/css/style2.css">
+ 
+</head>
+<body>
+    <div class="top-bar">
+        <div class="nav-values"><a href="/Seller/product_list">Listed Product</a></div>
+        <div class="logo"><img src="/seller-st/image/Savvyo_logo.png" alt=""></div>
+        <div class="nav-values"><a href="/Seller/sessionLogout">Logout</a></div>
+        <!-- <div class="te"><p>Welcome, Seller ID: <%= sellerId %></p></div> -->
+        <button id="addButton">+</button>
+    </div>
+
+    <div id="productCard">
+        <div class="product-form">
+            <input type="text" id="productName" placeholder="Product Name" required>
+    
+            <div class="image-input">
+                <input type="file" id="productImage" accept="image/*" onchange="previewImage(event)" required>
+                <label for="productImage">Change Image</label>
+                <img id="imagePreview" src="/seller-st/image/image.png" alt="Product Image">
+            </div>
+    
+            <input type="number" id="productPrice" placeholder="Product Price" required>
+
+            <input type="number" id="productMrpPrice" placeholder="Product MRP Price">
+
+            <input type="text" id="productKeyword" placeholder="Keyword Seprate By comma ',' " required>
+            <textarea id="productDescription" placeholder="Product Description"></textarea>
+    
+            <select id="category">
+                <option value="Shoes">Shoes</option>
+                <option value="Vegitable">Vegitable</option>
+                <option value="Accessory">Accessory</option>
+                <!-- Add more options as needed -->
+            </select>
+    
+            <!-- <input type="file" id="additionalImages" accept="image/*" multiple style="display:none;">
+            <button onclick="addMultipleImages()">Add Multiple Images</button> -->
+    
+            <input type="checkbox" id="statusToggle" checked> <!-- Checked means active -->
+            <label for="statusToggle">Active</label>
+    
+            <input type="number" id="inventory" placeholder="Inventory">
+    
+            <select id="variation">
+                <option value="kg">Kg</option>
+                <option value="grams">Grams</option>
+                <option value="unit">Unit</option>
+                <option value="liter">Liter</option>
+                <option value="ml">Ml</option>
+                <!-- Add more options as needed -->
+            </select>
+            <input type="hidden" id="sellerId" value=" <%= sellerId %>">
+
+            <button onclick="saveProduct(<%= JSON.stringify(sellerId) %>)">Save</button>
+        </div>
+    </div>
+    
+
+   <script src=" https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"> </script>
+    <script>
+        // Your Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyDrJUu-Rrm0I0Zyyuq04FLT-18Qw3CTQgo",
+    authDomain: "otp-eef9a.firebaseapp.com",
+    databaseURL: "https://otp-eef9a-default-rtdb.firebaseio.com",
+    projectId: "otp-eef9a",
+    storageBucket: "otp-eef9a.appspot.com",
+    messagingSenderId: "882550430642",
+    appId: "1:882550430642:web:0d25e494383dab85c1a2ab",
+    measurementId: "G-0MBE37TF6G"
+};
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+        document.getElementById('addButton').addEventListener('click', function() {
+            document.getElementById('productCard').style.display = 'block';
+        });
+
+
+function createProductCard() {
+    const productCard = document.createElement('div');
+    productCard.className = 'productCard';
+
+    const productForm = document.createElement('div');
+    productForm.className = 'product-form';
+
+    productForm.innerHTML = `
+        <input type="text" class="productName" placeholder="Product Name">
+        <div class="image-input">
+            <input type="file" class="productImage" accept="image/*" onchange="previewImage(event)">
+            <label for="productImage">Change Image</label>
+            <img class="imagePreview" src="ima/image.png" alt="Product Image">
+        </div>
+        <input type="number" class="productPrice" placeholder="Product Price">
+        <textarea class="productDescription" placeholder="Product Description"></textarea>
+        <button onclick="saveProduct(this)">Save</button>
+    `;
+
+    productCard.appendChild(productForm);
+    document.body.appendChild(productCard);
+}
+
+document.getElementById('addButton').addEventListener('click', function() {
+            document.getElementById('productCard').style.display = 'block';
+            // Attach event listener to close the pop-up when clicking outside
+            document.addEventListener('click', closePopupOutside);
+        });
+
+        function closePopupOutside(event) {
+            const productCard = document.getElementById('productCard');
+            const addButton = document.getElementById('addButton');
+            // Check if the click occurred outside of the product card and the add button
+            if (!productCard.contains(event.target) && event.target !== addButton) {
+                productCard.style.display = 'none';
+                // Remove the event listener after closing the pop-up
+                document.removeEventListener('click', closePopupOutside);
+            }
+        }
+
+        
+
+function saveProduct(sellerId) {
+    const productName = document.getElementById('productName').value;
+    const productPrice = document.getElementById('productPrice').value;
+    const productMrpPrice = document.getElementById('productMrpPrice').value;
+    const productDescription = document.getElementById('productDescription').value;
+    const productImageFile = document.getElementById('productImage').files[0]; // Get the file
+    const category = document.getElementById('category').value;
+    const status = document.getElementById('statusToggle').checked ? 'Active' : 'Non-active';
+    const inventory = document.getElementById('inventory').value;
+    const variation = document.getElementById('variation').value;
+    const productKeyword = document.getElementById('productKeyword').value;
+    // const sellerId = document.getElementById('sellerId').value; // Get the seller ID
+
+    // Create a storage reference with a unique name
+    const storageRef = firebase.storage().ref('productImages/' + productImageFile.name);
+
+    // Upload file to Firebase Storage
+    storageRef.put(productImageFile).then((snapshot) => {
+        console.log('File uploaded successfully');
+
+        // Get the download URL of the uploaded file
+        storageRef.getDownloadURL().then((downloadURL) => {
+            // Store product details in Firestore along with the download URL
+            db.collection("products").add({
+                productName: productName,
+                productPrice: productPrice,
+                productMrpPrice: productMrpPrice,
+                productKeyword:productKeyword,
+                productDescription: productDescription,
+                productImage: downloadURL, // Save the download URL
+                category: category,
+                status: status,
+                inventory: inventory,
+                variation: variation,
+                sellerId:sellerId,
+            })
+            .then((docRef) => {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+
+            // Clear the inputs after saving
+            document.getElementById('productName').value = '';
+            document.getElementById('productImage').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productMrpPrice').value = '';
+            document.getElementById('productKeyword').value = '';
+            document.getElementById('productDescription').value = '';
+            document.getElementById('category').value = 'electronics'; // Reset category to default
+            document.getElementById('statusToggle').checked = true; // Reset status to active
+            document.getElementById('inventory').value = '';
+            document.getElementById('variation').value = 'kg'; // Reset variation to default
+
+            // Hide the card after saving
+            document.getElementById('productCard').style.display = 'none';
+        }).catch((error) => {
+            console.error("Error getting download URL: ", error);
+        });
+    }).catch((error) => {
+        console.error("Error uploading file: ", error);
+    });
+}
+
+
+
+        function previewImage(event) {
+            const input = event.target;
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const productImage = reader.result;
+                document.getElementById('imagePreview').src = productImage;
+            }
+
+            reader.readAsDataURL(file);
+        }
+        
+    </script>
+</body>
+</html>

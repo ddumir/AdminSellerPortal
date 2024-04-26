@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web-st/css/seller_reg.css">
+    <title>Seller Registration</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Savvyo</h1>
+        <p>We are excited to have you join our platform and become a valued seller.</p>
+
+        <div class="registration-form">
+            <form action="#" method="post" enctype="multipart/form-data" id="seller-form">
+                <div class="alert">Registered Successfully</div>
+                
+                <!-- Personal Information -->
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Contact Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Contact Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <!-- Business Information -->
+                <label for="businessName">Business Name:</label>
+                <input type="text" id="businessName" name="businessName" required>
+
+                <label for="businessAddress">Business Address:</label>
+                <textarea id="businessAddress" name="businessAddress" required></textarea>
+
+                <label for="businessGst">GST Number</label>
+                <input type="text" id="businessGst" name="businessGst" required>
+
+                <!-- Product Details -->
+                <label for="productType">Type of Products:</label>
+                <select id="productType" name="productType" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Grocery & Gourmet">Grocery & Gourmet</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Home & Kitchen">Home & Kitchen</option>
+                    <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+                    <option value="Books, Movies & Music">Books, Movies & Music</option>
+                    <option value="Toys & Games">Toys & Games</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="Sports & Outdoors">Sports & Outdoors</option>
+                    <option value="Industrial & Scientific">Industrial & Scientific</option>
+                </select>
+                <!-- <label for="priceRange">Average Price Range:</label> -->
+                <!-- <input type="text" id="priceRange" name="priceRange" required> -->
+
+                <label for="productDescription">Brief Description of Your Products:</label>
+                <textarea id="productDescription" name="productDescription" required></textarea>
+
+                <!-- Shipping and Logistics -->
+                <!-- <label for="shippingLocations">Shipping Locations (Countries/Regions):</label> -->
+                <!-- <input type="text" id="shippingLocations" name="shippingLocations" required> -->
+
+                <!-- <label for="shippingTime">Estimated Shipping Time:</label> -->
+                <!-- <input type="text" id="shippingTime" name="shippingTime" required> -->
+
+                <!-- Payment Details -->
+                <!-- <label for="paymentMethod">Preferred Payment Method:</label> -->
+                <!-- <input type="text" id="paymentMethod" name="paymentMethod" required> -->
+
+                <label for="bankDetails">Bank Account Details (for payouts):</label>
+                <input type="text" id="bankDetails" name="bankDetails" required>
+
+                <!-- Marketing and Promotions -->
+                <label for="socialMedia">Social Media Profiles (for cross-promotion):</label>
+                <input type="text" id="socialMedia" name="socialMedia">
+
+                <!-- <label for="couponCodes">Coupon Codes or Special Offers:</label> -->
+                <!-- <input type="text" id="couponCodes" name="couponCodes"> -->
+
+                <!-- Verification -->
+                <label for="verificationFile">Upload ID And Business Registration Certificate In PDF Form:</label>
+                <input type="file" id="verificationFile" name="verificationFile" accept=".pdf, .jpg, .jpeg, .png" required>
+
+                <!-- Terms and Conditions -->
+                <div class="terms-and-conditions">
+                    <input type="checkbox" id="agreeTerms" class="TC-input"name="agreeTerms" required>
+                    <label for="agreeTerms">I agree to the <a href="#">Terms and Conditions</a></label>
+                </div>
+                <input type="hidden" id="status" name="status" value="pending">
+                <!-- Submit Button -->
+                <button type="submit" id="submit">Submit Your Registration Form</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="/web-st/js/seller-form.js"></script>
+</body>
+</html>

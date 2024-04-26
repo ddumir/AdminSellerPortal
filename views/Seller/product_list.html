@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/seller-st/css/product.css">
+<title>Card with Firebase Data</title>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo"><img src="/seller-st/image/Savvyo_logo.png" alt=""></div>
+    </div>
+<section class="card-list">
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+<script>
+  // Your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDrJUu-Rrm0I0Zyyuq04FLT-18Qw3CTQgo",
+    authDomain: "otp-eef9a.firebaseapp.com",
+    databaseURL: "https://otp-eef9a-default-rtdb.firebaseio.com",
+    projectId: "otp-eef9a",
+    storageBucket: "otp-eef9a.appspot.com",
+    messagingSenderId: "882550430642",
+    appId: "1:882550430642:web:0d25e494383dab85c1a2ab",
+    measurementId: "G-0MBE37TF6G"
+};
+  
+firebase.initializeApp(firebaseConfig);
+
+// Reference to your Firebase Firestore database
+var db = firebase.firestore();
+
+// Reference to the specific collection in the database where your products are stored
+var productsCollection = db.collection('products');
+
+// Reference to the card list section
+var cardListSection = document.querySelector('.card-list');
+
+// Fetch the product data
+productsCollection.where("sellerId", "==", "<%= sellerId %>").get().then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) {
+    var product = doc.data();
+
+    // Create HTML elements for the card
+    var card = document.createElement('article');
+    card.classList.add('card');
+
+    var header = document.createElement('header');
+    header.classList.add('card-header');
+
+    var productName = document.createElement('h2');
+    productName.innerText = product.productName;
+
+    header.appendChild(productName);
+
+    var cardAuthor = document.createElement('div');
+    cardAuthor.classList.add('card-author');
+
+    var authorAvatar = document.createElement('a');
+    authorAvatar.classList.add('author-avatar');
+    authorAvatar.href = '#';
+
+    var productImage = document.createElement('img');
+    productImage.classList.add('product-image');
+    productImage.src = product.productImage;
+    productImage.alt = 'Product Image';
+
+    authorAvatar.appendChild(productImage);
+    cardAuthor.appendChild(authorAvatar);
+
+    var authorName = document.createElement('div');
+    authorName.classList.add('author-name');
+
+    var productPrice = document.createElement('div');
+    productPrice.classList.add('product-price');
+    productPrice.innerText = product.productPrice;
+
+    var productDescription = document.createElement('div');
+    productDescription.classList.add('product-description');
+    productDescription.innerText = product.productDescription;
+
+    authorName.appendChild(productPrice);
+    authorName.appendChild(productDescription);
+    cardAuthor.appendChild(authorName);
+
+    card.appendChild(header);
+    card.appendChild(cardAuthor);
+
+    var tags = document.createElement('div');
+    tags.classList.add('tags');
+
+    // Create anchor tags for web buttons
+    var button1 = document.createElement('a');
+    button1.href = '#';
+    button1.innerText = 'Quantity';
+
+    var button2 = document.createElement('a');
+    button2.href = '#';
+    button2.innerText = 'Edit';
+
+    var button3 = document.createElement('a');
+    button3.href = '#';
+    button3.innerText = 'delete';
+
+    // Append buttons to the card
+    tags.appendChild(button1);
+    tags.appendChild(button2);
+    tags.appendChild(button3);
+
+    card.appendChild(tags);
+
+    // Append the card to the card list section
+    cardListSection.appendChild(card);
+  });
+}).catch(function(error) {
+  console.log("Error getting documents: ", error);
+});
+</script>
+</body>
+</html>

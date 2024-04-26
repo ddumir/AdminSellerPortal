@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pending Seller Applications</title>
+    <link rel="stylesheet" href="/admin-st/css/discription-pop-up.css">
+    <link rel="stylesheet" href="/admin-st/css/application-table.css">
+    <!-- Include Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <!-- Include Firebase configuration -->
+    <script src="firebase-config.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+</head>
+<body>
+    
+    <h1>Pending Seller Applications</h1>
+    <table id="seller-table">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>GST</th>
+                <th>Bank Details</th>
+                <th>Business Address</th>
+                <th>Product Discription</th>
+                <th>Business Name</th>
+                <th>Product Type</th>
+                <th>Social Media</th>
+                <th>Verifiaction File</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="seller-list"></tbody>
+    </table>
+    <!-- Modal -->
+    <div id="descriptionModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="fullDescription"></p>
+        </div>
+      </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/nodemailer@6.9.12/lib/nodemailer.min.js"></script> -->
+    <script src="/admin-st/js/seller-application-pending.js"></script>
+</body>
+</html>
