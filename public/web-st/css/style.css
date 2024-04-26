@@ -1,0 +1,160 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Anta', sans-serif;
+  background-color: #f4f4f4;
+}
+
+.savvio {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.top-space {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.top-space img {
+  width: 150px;
+  height: auto;
+}
+
+nav {
+  background-color: #333;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 20px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+.body-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+.flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+.flex-item {
+  flex-basis: 60%; /* Adjust as needed */
+  margin-right: 20px; /* Adjust spacing between items */
+}
+
+.flex-item2 {
+  flex-basis: 35%; /* Adjust as needed */
+  margin-left: 20px; /* Adjust spacing between items */
+}
+
+@media screen and (max-width: 768px) {
+  .flex-item,
+  .flex-item2 {
+      flex-basis: 100%;
+      margin: 0;
+  }
+}
+
+
+
+
+#flextext {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+#slogan {
+  color: #333;
+}
+
+.animated-text h1, .animated-text h2 {
+  margin: 0;
+}
+
+.slide-flex {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Animation */
+@keyframes slide-in {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.about {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.about h2 {
+  color: #333;
+}
+
+.about p {
+  color: #555;
+  line-height: 1.6;
+}
+
+footer {
+  background-color: #000; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Center align text */
+  padding: 20px 0; /* Add padding */
+}
+
+footer a {
+  text-decoration: none; /* Remove underline */
+  color: #fff; /* White text color */
+  margin: 0 10px; /* Add margin between links */
+}
+
+footer a:hover {
+  color: #ddd; /* Change text color on hover */
+}

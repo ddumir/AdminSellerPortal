@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    background-color: #ffcc00;
+    color: #000000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    margin-left: 30px;
+    height: 50px; /* Adjust the height of the logo */
+}
+
+.start-selling-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.start-selling-button:hover {
+    background-color: #45a049;
+}
+
+.container {
+    margin-left: 120px;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.container h1 {
+    font-size: 36px;
+}
+
+.container p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.container .start-selling-button {
+    margin-top: 20px;
+}
+
+.container p:last-child {
+    margin-top: 20px;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+#progressTracker {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .progressStep {
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+  }
+
+  .active {
+    background-color: blue;
+  }
+
+  .completed {
+    background-color: green;
+  }

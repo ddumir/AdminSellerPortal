@@ -1,0 +1,47 @@
+nav {
+    text-align: center;
+    background-color: antiquewhite;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    position: relative;
+}
+nav ul li:hover a {
+    color: rgb(105, 101, 96); /* Change to color */
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 150px;
+    left: 0;
+    background-color: #d4e0ae;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+nav ul ul li {
+    display: block;
+}
+
+
+nav ul li:hover > ul {
+    display: block;
+}
+nav ul ul li:hover {
+    background-color: #c7d5a8; /* Change to your desired color */
+}

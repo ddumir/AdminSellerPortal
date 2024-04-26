@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px ;
+    background-color: #333;
+    color: white;
+}
+
+.top-bar .logo img {
+    height: 30px;
+    width: auto;
+}
+.top-bar .nav-values a{
+    text-decoration: none;
+    color: #ccc;
+    margin-left: 400px;
+}
+.top-bar .nav-values a:hover{
+    color: aqua;
+
+}
+
+#productCard {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    height: 400px;
+    width: 300px ;
+}
+
+.product-form img{
+    height: 100px;
+}
+
+.product-form {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid rgb(33, 150, 243);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-form button {
+    background-color: rgb(33, 150, 243);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+.product-form input[type="file"] {
+    display: none;
+}
+
